@@ -2,7 +2,7 @@
 // Permintaan ke server data (POST) tidak pernah disimpan di cache.
 const C = 'santri-v1';
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(C).then(c => c.addAll(['./', 'index.html', 'Logo.jpg', 'icon-512.png'])).catch(() => {}));
+  e.waitUntil(caches.open(C).then(c => c.addAll(['./', 'index.html', 'Logo.jpg', 'Logo.jpg'])).catch(() => {}));
   self.skipWaiting();
 });
 self.addEventListener('activate', e => {
