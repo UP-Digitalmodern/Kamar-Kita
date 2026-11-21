@@ -1,8 +1,8 @@
 // Service worker sederhana: aplikasi tetap terbuka walau sinyal lemah.
 // Permintaan ke server data (POST) tidak pernah disimpan di cache.
-const C = 'santri-v1';
+const C = 'santri-v3';
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(C).then(c => c.addAll(['./', 'index.html', 'Logo.jpg', 'Logo.jpg'])).catch(() => {}));
+  e.waitUntil(caches.open(C).then(c => c.addAll(['./', 'index.html', 'icon-192.png', 'icon-512.png'])).catch(() => {}));
   self.skipWaiting();
 });
 self.addEventListener('activate', e => {
