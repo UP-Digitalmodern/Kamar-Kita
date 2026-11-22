@@ -1,6 +1,6 @@
 {
-  "name": "Aplikasi Santri",
-  "short_name": "Santri",
+  "name": "SAHIFA",
+  "short_name": "SAHIFA",
   "description": "Aplikasi pesantren digital: data santri, absen, nilai, hafalan, tabungan, perpustakaan, dan Al-Qur'an",
   "start_url": "./index.html",
   "scope": "./",
