@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="id"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Aplikasi Santri</title>
+<title>SAHIFA</title>
 <script src="config.js" onerror="void 0"></script>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#2c5799">
@@ -368,7 +368,7 @@ svg.ic{width:100%;height:100%;display:block}
 <p class="ltag">BELAJAR • MENGHAFAL • BERTUMBUH BERSAMA</p></div></div>
 <div class="app">
 <header class="top"><button class="ib" id="back" style="display:none">‹</button><div class="logo lw"><i class="lgm"></i></div>
-<div><h1>Aplikasi Santri</h1><small id="orgT"></small></div><div class="sp"></div>
+<div><h1>SAHIFA</h1><small id="orgT"></small></div><div class="sp"></div>
 <button class="ib" id="who" style="width:auto;padding:0 12px;font-size:12px;font-weight:700">👤 Admin</button><button class="ib" id="theme">🌙</button></header>
 <div id="demoBar" style="display:none;background:#fdf1e3;color:#8a4b00;font-size:12px;line-height:1.5;padding:8px 14px;text-align:center;border-bottom:1px solid #f0d9b5">⚠ MODE DEMO: aplikasi belum terhubung ke Google Spreadsheet. Data hanya di perangkat ini dan santri belum bisa login. Isi alamat Apps Script di <b>config.js</b> (lihat panduan).</div>
 <main>
@@ -752,7 +752,7 @@ setInterval(function(){if(!REMOTE||!LOADED||document.hidden||SAV)return;api('loa
 function akunSec(x){var del='<button class="btn o" style="width:100%;color:#c24b4b;margin:6px 0 10px" data-act="sdel" data-a="'+x.id+'">Hapus santri</button>';
  if(!REMOTE)return sec('Akun Santri',kv('Status','Mode demo lokal')+'<div class="note">Login santri aktif setelah aplikasi dihubungkan ke Google Spreadsheet.</div>'+del);
  return sec('Akun Santri',kv('Username',x.un||'(belum dibuat)')+kv('Terakhir aktif',SEEN[x.n]?ago(SEEN[x.n]):'belum pernah masuk')+'<button class="btn" style="width:100%;margin:8px 0" data-act="mkak" data-a="'+x.id+'">'+(x.un?'Reset kata sandi':'Buat akun')+'</button>'+del)}
-function showCred(n,u,p){var url=location.href.split('#')[0].split('?')[0],t="Assalamu'alaikum "+n+". Akun Aplikasi Santri Anda:\nAlamat: "+url+"\nUsername: "+u+"\nKata sandi: "+p+"\nSimpan dan jangan dibagikan ke orang lain.";
+function showCred(n,u,p){var url=location.href.split('#')[0].split('?')[0],t="Assalamu'alaikum "+n+". Akun SAHIFA Anda:\nAlamat: "+url+"\nUsername: "+u+"\nKata sandi: "+p+"\nSimpan dan jangan dibagikan ke orang lain.";
  $('cr1').innerHTML='<div class="kv"><span>Nama</span><b>'+esc(n)+'</b></div><div class="kv"><span>Username</span><b style="user-select:all">'+esc(u)+'</b></div><div class="kv"><span>Kata sandi</span><b style="user-select:all">'+esc(p)+'</b></div><small style="color:var(--soft);display:block;margin:8px 0 12px">Kata sandi hanya tampil sekarang. Catat atau kirim ke santri.</small><a class="btn" style="display:block;text-align:center;text-decoration:none;margin-bottom:8px" target="_blank" rel="noopener" href="https://wa.me/?text='+encodeURIComponent(t)+'">Kirim via WhatsApp</a>';$('cr').classList.add('on')}
 A.mkak=function(a){var x=sn(a);api('mkak',{sid:a,name:x.n}).then(function(r){if(!r.ok){toast(r.err||'Gagal membuat akun');return}x.un=r.username;lg('Akun dibuat/direset: '+x.n);R();showCred(x.n,r.username,r.password)}).catch(function(){toast(NETERR)})};
 A.mkall=function(){if(!REMOTE){toast('Tersedia setelah aplikasi dihubungkan ke Google Spreadsheet');return}var L=DB.S.filter(function(x){return !x.un}).map(function(x){return{id:x.id,name:x.n}});if(!L.length){toast('Semua santri sudah punya akun');return}
@@ -853,7 +853,7 @@ function renderTab(){var el=$('tb');if(adm()&&!sn(tsel))tsel=null;
 A.tback=function(){tsel=null;tabQ='';renderTab()};
 /* nomor WhatsApp, akun, sandi */
 function waNum(t){var d=String(t||'').replace(/\D/g,'');if(!d)return '';if(d.indexOf('00')===0)d=d.slice(2);if(d[0]==='0')d='62'+d.slice(1);else if(d[0]==='8')d='62'+d;return d}
-function waLink(x,pw){var t="Assalamu'alaikum "+x.n+". Akun Aplikasi Santri Anda:\nAlamat: "+location.href.split('#')[0].split('?')[0]+"\nUsername: "+x.un+"\nKata sandi: "+pw+"\nSimpan dan jangan dibagikan ke orang lain.";return 'https://wa.me/'+waNum(x.tel)+'?text='+encodeURIComponent(t)}
+function waLink(x,pw){var t="Assalamu'alaikum "+x.n+". Akun SAHIFA Anda:\nAlamat: "+location.href.split('#')[0].split('?')[0]+"\nUsername: "+x.un+"\nKata sandi: "+pw+"\nSimpan dan jangan dibagikan ke orang lain.";return 'https://wa.me/'+waNum(x.tel)+'?text='+encodeURIComponent(t)}
 var PW={};
 function akunSec(x){var del='<button class="btn o" style="width:100%;color:#c24b4b;margin:6px 0 10px" data-act="sdel" data-a="'+x.id+'">Hapus santri</button>';
  if(!REMOTE)return sec('Akun Santri',kv('Status','Mode demo lokal')+'<div class="note">Login santri aktif setelah aplikasi dihubungkan ke Google Spreadsheet.</div>'+del);
@@ -909,7 +909,7 @@ function renderHome(){var el=$('dash');if(!el)return;var isA=adm(),x=isA?null:sn
 document.addEventListener('scroll',function(e){var t=e.target;if(t&&t.classList&&t.classList.contains('mg')){var i=Math.round(t.scrollLeft/Math.max(1,t.clientWidth));document.querySelectorAll('.dots i').forEach(function(d,k){d.classList.toggle('on',k===i)})}},true);
 function dsi(m,v){var on=(m.go&&m.go===v)||(m.act==='gopro'&&v==='pro')||(m.act==='gohaf'&&false);return '<button class="dsi'+(on?' on':'')+'" '+attrOf(m)+' data-v="'+(m.go||'')+'"><span class="di">'+(m.raw||ic(m.i))+'</span>'+esc(m.t)+'</button>'}
 function renderSide(){var el=$('dside');if(!el)return;var cur=document.querySelector('.view.on'),v=cur?cur.id.slice(2):'home',x=adm()?null:sn(me);
- el.innerHTML='<div class="dsb"><div class="logo lw"><i class="lgm"></i></div><div><b>Aplikasi Santri</b><small>'+esc(DB.org||'Pesantren Digital')+'</small></div></div>'+dsi({t:'Beranda',raw:'<svg class="ic" style="color:var(--ac)"><use href="#n-home"/></svg>',go:'home'},v)+menuAll().map(function(m){return dsi(m,v)}).join('')+dsi({t:'Lainnya',i:'grid',go:'menu'},v)+
+ el.innerHTML='<div class="dsb"><div class="logo lw"><i class="lgm"></i></div><div><b>SAHIFA</b><small>'+esc(DB.org||'Pesantren Digital')+'</small></div></div>'+dsi({t:'Beranda',raw:'<svg class="ic" style="color:var(--ac)"><use href="#n-home"/></svg>',go:'home'},v)+menuAll().map(function(m){return dsi(m,v)}).join('')+dsi({t:'Lainnya',i:'grid',go:'menu'},v)+
  '<div class="dsf"><div class="dsu"><div class="dav'+((x&&x.foto)||!adm()?'':' lw')+'">'+((x&&x.foto)?'<img alt="" src="'+x.foto+'">':(adm()?'<i class="lgm"></i>':esc(ini(x?x.n:'?'))))+'</div><div><b>'+esc(who())+'</b><small>'+(adm()?'Admin':'Santri')+'</small></div></div><button class="dsi" id="dsth"><span class="di" style="font-size:22px;display:grid;place-items:center">🌓</span>Mode gelap</button><button class="dsi" data-act="acc"><span class="di" style="font-size:22px;display:grid;place-items:center">🚪</span>'+(REMOTE?'Keluar':'Ganti akun')+'</button></div>';bindGo()}
 function renderMenuRows(){var el=$('mrows');if(!el)return;el.innerHTML=menuAll().map(function(m){return '<button class="mr" '+attrOf(m)+'><span class="mi2">'+ic(m.i)+'</span><b>'+esc(m.t)+'</b></button>'}).join('')+(adm()?'':'<button class="mr" data-act="wadm"><span class="mi2">'+ic('chat')+'</span><b>Hubungi Admin (WhatsApp)</b></button>')+'<button class="mr" data-act="kota"><span class="mi2" style="font-size:28px;display:grid;place-items:center">🕌</span><b>Lokasi waktu sholat: '+kotaNow()+'</b></button><button class="mr" id="mrth"><span class="mi2" style="font-size:28px;display:grid;place-items:center">🌓</span><b>Mode gelap</b></button><button class="mr" data-act="acc"><span class="mi2" style="font-size:28px;display:grid;place-items:center">🚪</span><b>'+(REMOTE?'Keluar':'Ganti akun')+'</b></button>';bindGo()}
 document.addEventListener('click',function(e){if(e.target.closest('#tgl,#mrth,#dsth')){$('theme').click();renderHome();renderSide();var m=$('lmoon');if(m)m.textContent=isDark()?'☀️':'🌙'}});
