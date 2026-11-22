@@ -475,7 +475,7 @@ var NM="Ahmad Fauzan,Muhammad Rizki,Bilal Hakim,Umar Abdullah,Siti Aminah,Nur Ha
 function seed(){var id=1,k=0,O=T.map(function(t,i){return{id:i+1,n:t[0],open:i===0,m:t[1].split(",").map(function(r){k++;return{id:id++,n:NM[(k*4)%NM.length],j:r,k:KL[k%KL.length],r:'A-'+(k%9+1)}})}});
  var s1=mk(101,"Ahmad Fauzan","Malang, 12 Mei 2010","Jl. Merdeka No. 5, Malang","Kelas 2 Tsanawiyah","A-3"),s2=mk(102,"Muhammad Rizki","Surabaya, 3 Maret 2009","Jl. Pahlawan No. 18, Surabaya","Kelas 3 Tsanawiyah","B-1"),s3=mk(103,"Bilal Hakim","Blitar, 20 Januari 2008","Dsn. Sumber, Blitar","Kelas 1 Aliyah","B-4");
  s1.nilai=[{m:'Fiqih',v:88},{m:'Nahwu',v:82}];s1.absen=[{d:'2026-07-10',s:'Hadir'},{d:'2026-07-11',s:'Hadir'},{d:'2026-07-12',s:'Izin'}];s1.haf=[{s:"An-Naba'",a:'1-40',d:'2026-07-01'}];s1.tab=[{t:'2026-07-01T08:00:00.000Z',j:'Pemasukan',n:200000,k:'Uang saku'}];
- return{org:"Pondok Pesantren Al-Amin",O:O,nid:1000,S:[s1,s2,s3],P:[],M:[{id:1,n:"Notulensi Rapat Pleno I",t:"doc",z:"248 KB",d:"2 Jul 2026"},{id:2,n:"Tata Tertib Sidang Tahunan",t:"pdf",z:"512 KB",d:"28 Jun 2026"}],log:[]}}
+ return{org:"FS2M JABODETABEK",O:O,nid:1000,S:[s1,s2,s3],P:[],M:[{id:1,n:"Notulensi Rapat Pleno I",t:"doc",z:"248 KB",d:"2 Jul 2026"},{id:2,n:"Tata Tertib Sidang Tahunan",t:"pdf",z:"512 KB",d:"28 Jun 2026"}],log:[]}}
 var DB;try{DB=JSON.parse(localStorage.getItem(KEY))}catch(e){}var fresh=!DB||!DB.S;if(fresh){DB=seed();addDemo()}
 var ADMV=['org','mat','san','log','abs','gd'],JNS=['Pemasukan','Pengeluaran'],KEP=['Uang saku','Jajan / kantin','Buku & kitab','Kebutuhan harian','Syahriyah / iuran','Kesehatan','Transportasi','Lainnya'];
 function sn(id){return DB.S.filter(function(s){return s.id==id})[0]}
@@ -737,7 +737,7 @@ function showLogin(msg){$('lgn').style.display='flex';$('le').textContent=msg||'
 function fixDB(){['O','S','P','M','G','N'].forEach(function(k){if(!Array.isArray(DB[k]))DB[k]=[]});if(!DB.log)DB.log=[];DB.S.forEach(function(x){['nilai','absen','haf','tab'].forEach(function(k){if(!Array.isArray(x[k]))x[k]=[]})});
  if(!Array.isArray(DB.F))DB.F=['Fiqih','Ushul Fiqih','Nahwu','Sharaf','Balaghah','Mantiq','Tafsir',"Ulumul Qur'an",'Hadis','Mushthalah Hadis','Akidah / Tauhid','Tasawuf / Akhlak','Tarikh / Sirah','Faraidh','Tajwid / Qiraat','Lainnya'];
  DB.P.forEach(function(q){if(q.f&&DB.F.indexOf(q.f)<0)DB.F.push(q.f)})}
-function applyLoad(r,first){DB=r.db||{org:'Pondok Pesantren',O:[],nid:1000,S:[],P:[],M:[],G:[],N:[],log:[]};fixDB();ACT=r.log||[];SEEN=r.seen||{};
+function applyLoad(r,first){DB=r.db||{org:'FS2M JABODETABEK',O:[],nid:1000,S:[],P:[],M:[],G:[],N:[],log:[]};fixDB();ACT=r.log||[];SEEN=r.seen||{};
  if(first){me=r.role==='admin'?'admin':r.sid;viewS=me==='admin'?null:me;tsel=null;tabQ='';absK='Semua';curFan=null;LOADED=true;SEENV={};$('lgn').style.display='none';
   if(me==='admin'&&!DB.O.length){DB.O.push({id:1,n:'Dewan Harian',open:true,m:[]});save()}}
  renderAll();if(first){SRV=r.ver||'';setVer();go('home');setSync('Terhubung ke Google Spreadsheet');if(r.role==='admin'&&SRV<MIN_SRV)setTimeout(function(){toast('Code.gs di Apps Script belum versi terbaru. Tempel Code.gs baru lalu Terapkan Versi baru.')},800)}}
